@@ -1,4 +1,6 @@
 #!/usr/bin/python
+from __future__ import print_function
+
 import os
 import shutil
 import subprocess
@@ -6,11 +8,14 @@ import sys
 import tempfile
 
 
-if __name__ == '__main__':
+def main():
     name = subprocess.check_output(['python', 'setup.py', '--name']).strip()
     url = "https://pypi.python.org/pypi/%s/" % name
     description = subprocess.check_output(['python', 'setup.py', '--description']).strip()
     assert 'python' not in name
+    if len(sys.argv) == 1:
+        print("Usage: %s alias [setup.py arguments]" % sys.argv[0], file=sys.stderr)
+        sys.exit(1)
     alias = sys.argv[1]
     author = subprocess.check_output(['python', 'setup.py', '--author']).strip()
     author_email = subprocess.check_output(['python', 'setup.py', '--author-email']).strip()
@@ -40,7 +45,7 @@ setup(
     maintainer_email=%(author_email)r,
     name=%(alias)r,
     platforms=['all'],
-    py_modules=['wheel-is-broken-on-empty-wheels-see-issue-141'],
+    py_modules=['wheel-platform-tag-is-broken-on-empty-wheels-see-issue-141'],
     url=%(url)r,
     version="0.0",
     zip_safe=False,
@@ -50,3 +55,6 @@ setup(
         subprocess.call(['python', 'setup.py'] + sys.argv[2:])
     finally:
         shutil.rmtree(path)
+
+if __name__ == '__main__':
+    main()
