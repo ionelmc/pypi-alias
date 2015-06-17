@@ -2,19 +2,18 @@
 pypi-alias
 ===============================
 
-..
-    list-table::
+.. list-table::
     :stub-columns: 1
 
+    * - package
+      - |version| |downloads|
+
+..
     * - docs
       - |docs|
     * - tests
       - | |travis| |appveyor|
         | |coveralls| |codecov| |landscape| |scrutinizer|
-    * - package
-      - |version| |downloads|
-
-..
     |wheel| |supported-versions| |supported-implementations|
 
 .. |docs| image:: https://readthedocs.org/projects/pypi-alias/badge/?style=flat
