@@ -50,7 +50,7 @@ setup(
     version="0.0",
     zip_safe=False,
 )
-""" % globals())
+""" % locals())
 
         subprocess.call(['python', 'setup.py'] + sys.argv[2:])
     finally:
