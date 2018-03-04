@@ -48,15 +48,15 @@ pypi-alias
     :alt: PyPI Package monthly downloads
     :target: https://pypi.python.org/pypi/pypi-alias
 
-.. |wheel| image:: https://pypip.in/wheel/pypi-alias/badge.svg?style=flat
+.. |wheel| image:: https://img.shields.io/pypi/wheel/pypi-alias.svg?style=flat
     :alt: PyPI Wheel
     :target: https://pypi.python.org/pypi/pypi-alias
 
-.. |supported-versions| image:: https://pypip.in/py_versions/pypi-alias/badge.svg?style=flat
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/pypi-alias.svg?style=flat
     :alt: Supported versions
     :target: https://pypi.python.org/pypi/pypi-alias
 
-.. |supported-implementations| image:: https://pypip.in/implementation/pypi-alias/badge.svg?style=flat
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/pypi-alias.svg?style=flat
     :alt: Supported imlementations
     :target: https://pypi.python.org/pypi/pypi-alias
 
