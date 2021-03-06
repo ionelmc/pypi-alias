@@ -9,7 +9,7 @@ import tempfile
 
 
 def run_command(params):
-    output = subprocess.check_output(params)
+    output = subprocess.check_output(params, encoding="utf-8")
     return output.strip()
 
 
