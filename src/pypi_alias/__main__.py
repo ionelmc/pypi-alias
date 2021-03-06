@@ -30,12 +30,12 @@ def main():
     try:
         path = tempfile.mkdtemp()
         os.chdir(path)
-        with open(os.path.join(path, 'setup.cfg'), 'wb') as fh:
-            fh.write(b"""[bdist_wheel]
+        with open(os.path.join(path, 'setup.cfg'), 'w', encoding="utf-8") as fh:
+            fh.write("""[bdist_wheel]
 universal = 1
 """)
-        with open(os.path.join(path, 'setup.py'), 'wb') as fh:
-            fh.write(b"""# encoding: utf8
+        with open(os.path.join(path, 'setup.py'), 'w', encoding="utf-8") as fh:
+            fh.write("""# encoding: utf8
 
 from setuptools import setup
 
