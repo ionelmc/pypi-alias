@@ -49,26 +49,29 @@ setup(
 )
 """
 
-    path = tempfile.mkdtemp()
-    src = os.path.abspath(os.getcwd())
+    tmp_path = tempfile.mkdtemp()
+    project_path = os.path.abspath(os.getcwd())
+    output_path = os.path.join(project_path, 'dist')
+    os.makedirs(output_path, exist_ok=True)
+
     try:
-        os.symlink(os.path.join(src, 'dist'), os.path.join(path, 'dist'), target_is_directory=True)
-        os.chdir(path)
-        with open(os.path.join(path, 'setup.cfg'), 'w', encoding="utf-8") as fh:
+        os.symlink(output_path, os.path.join(tmp_path, 'dist'), target_is_directory=True)
+        os.chdir(tmp_path)
+        with open(os.path.join(tmp_path, 'setup.cfg'), 'w', encoding="utf-8") as fh:
             fh.write("""[bdist_wheel]
 universal = 1
 """)
-        with open(os.path.join(path, 'README'), 'w', encoding="utf-8") as fh:
+        with open(os.path.join(tmp_path, 'README'), 'w', encoding="utf-8") as fh:
             fh.write(long_description)
 
-        with open(os.path.join(path, 'setup.py'), 'w', encoding="utf-8") as fh:
+        with open(os.path.join(tmp_path, 'setup.py'), 'w', encoding="utf-8") as fh:
             fh.write(setup_py)
 
-        print(f'-> Generated setup.py code in {path}:')
+        print(f'-> Generated setup.py code in {tmp_path}:')
         print(setup_py)
         print(f'-> Running: python setup.py {" ".join(passthrough_args)}')
         subprocess.call(['python', 'setup.py'] + passthrough_args)
     finally:
-        os.chdir(src)
+        os.chdir(project_path)
         if not options.dirty:
-            shutil.rmtree(path)
+            shutil.rmtree(tmp_path)
