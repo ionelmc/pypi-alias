@@ -8,29 +8,34 @@ import sys
 import tempfile
 
 
+def run_command(params):
+    output = subprocess.check_output(params, encoding="utf-8")
+    return output.strip()
+
+
 def main():
-    name = subprocess.check_output(['python', 'setup.py', '--name']).strip()
+    name = run_command(['python', 'setup.py', '--name'])
     url = "https://pypi.python.org/pypi/%s/" % name
-    description = subprocess.check_output(['python', 'setup.py', '--description']).strip()
+    description = run_command(['python', 'setup.py', '--description'])
     assert 'python' not in name
     if len(sys.argv) == 1:
         print("Usage: %s alias [setup.py arguments]" % sys.argv[0], file=sys.stderr)
         sys.exit(1)
     alias = sys.argv[1]
-    author = subprocess.check_output(['python', 'setup.py', '--author']).strip()
-    author_email = subprocess.check_output(['python', 'setup.py', '--author-email']).strip()
-    maintainer = subprocess.check_output(['python', 'setup.py', '--maintainer']).strip()
-    maintainer_email = subprocess.check_output(['python', 'setup.py', '--maintainer-email']).strip()
+    author = run_command(['python', 'setup.py', '--author'])
+    author_email = run_command(['python', 'setup.py', '--author-email'])
+    maintainer = run_command(['python', 'setup.py', '--maintainer'])
+    maintainer_email = run_command(['python', 'setup.py', '--maintainer-email'])
 
     try:
         path = tempfile.mkdtemp()
         os.chdir(path)
-        with open(os.path.join(path, 'setup.cfg'), 'wb') as fh:
-            fh.write(b"""[bdist_wheel]
+        with open(os.path.join(path, 'setup.cfg'), 'w', encoding="utf-8") as fh:
+            fh.write("""[bdist_wheel]
 universal = 1
 """)
-        with open(os.path.join(path, 'setup.py'), 'wb') as fh:
-            fh.write(b"""# encoding: utf8
+        with open(os.path.join(path, 'setup.py'), 'w', encoding="utf-8") as fh:
+            fh.write("""# encoding: utf8
 
 from setuptools import setup
 
