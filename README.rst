@@ -1,74 +1,56 @@
-===============================
-pypi-alias
-===============================
+========
+Overview
+========
+
+.. start-badges
 
 .. list-table::
     :stub-columns: 1
 
-    * - package
-      - |version| |downloads|
-
-..
-    * - docs
-      - |docs|
     * - tests
-      - | |travis| |appveyor|
-        | |coveralls| |codecov| |landscape| |scrutinizer|
-    |wheel| |supported-versions| |supported-implementations|
+      - | |travis| |requires|
+        |
+    * - package
+      - | |version| |wheel| |supported-versions| |supported-implementations|
+        | |commits-since|
 
-.. |docs| image:: https://readthedocs.org/projects/pypi-alias/badge/?style=flat
-    :target: https://readthedocs.org/projects/pypi-alias
-    :alt: Documentation Status
-
-.. |travis| image:: http://img.shields.io/travis/ionelmc/pypi-alias/master.svg?style=flat&label=Travis
+.. |travis| image:: https://api.travis-ci.com/ionelmc/pypi-alias.svg?branch=master
     :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/ionelmc/pypi-alias
+    :target: https://travis-ci.com/github/ionelmc/pypi-alias
 
-.. |appveyor| image:: https://img.shields.io/appveyor/ci/ionelmc/pypi-alias/master.svg?style=flat&label=AppVeyor
-    :alt: AppVeyor Build Status
-    :target: https://ci.appveyor.com/project/ionelmc/pypi-alias
+.. |requires| image:: https://requires.io/github/ionelmc/pypi-alias/requirements.svg?branch=master
+    :alt: Requirements Status
+    :target: https://requires.io/github/ionelmc/pypi-alias/requirements/?branch=master
 
-.. |coveralls| image:: http://img.shields.io/coveralls/ionelmc/pypi-alias/master.svg?style=flat&label=Coveralls
-    :alt: Coverage Status
-    :target: https://coveralls.io/r/ionelmc/pypi-alias
-
-.. |codecov| image:: http://img.shields.io/codecov/c/github/ionelmc/pypi-alias/master.svg?style=flat&label=Codecov
-    :alt: Coverage Status
-    :target: https://codecov.io/github/ionelmc/pypi-alias
-
-.. |landscape| image:: https://landscape.io/github/ionelmc/pypi-alias/master/landscape.svg?style=flat
-    :target: https://landscape.io/github/ionelmc/pypi-alias/master
-    :alt: Code Quality Status
-
-.. |version| image:: http://img.shields.io/pypi/v/pypi-alias.svg?style=flat
+.. |version| image:: https://img.shields.io/pypi/v/pypi-alias.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.python.org/pypi/pypi-alias
+    :target: https://pypi.org/project/pypi-alias
 
-.. |downloads| image:: http://img.shields.io/pypi/dm/pypi-alias.svg?style=flat
-    :alt: PyPI Package monthly downloads
-    :target: https://pypi.python.org/pypi/pypi-alias
-
-.. |wheel| image:: https://pypip.in/wheel/pypi-alias/badge.svg?style=flat
+.. |wheel| image:: https://img.shields.io/pypi/wheel/pypi-alias.svg
     :alt: PyPI Wheel
-    :target: https://pypi.python.org/pypi/pypi-alias
+    :target: https://pypi.org/project/pypi-alias
 
-.. |supported-versions| image:: https://pypip.in/py_versions/pypi-alias/badge.svg?style=flat
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/pypi-alias.svg
     :alt: Supported versions
-    :target: https://pypi.python.org/pypi/pypi-alias
+    :target: https://pypi.org/project/pypi-alias
 
-.. |supported-implementations| image:: https://pypip.in/implementation/pypi-alias/badge.svg?style=flat
-    :alt: Supported imlementations
-    :target: https://pypi.python.org/pypi/pypi-alias
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/pypi-alias.svg
+    :alt: Supported implementations
+    :target: https://pypi.org/project/pypi-alias
 
-.. |scrutinizer| image:: https://img.shields.io/scrutinizer/g/ionelmc/pypi-alias/master.svg?style=flat
-    :alt: Scrutinizer Status
-    :target: https://scrutinizer-ci.com/g/ionelmc/pypi-alias/
+.. |commits-since| image:: https://img.shields.io/github/commits-since/ionelmc/pypi-alias/v0.2.0.svg
+    :alt: Commits since latest release
+    :target: https://github.com/ionelmc/pypi-alias/compare/v0.2.0...master
+
+
+
+.. end-badges
 
 A small utility to make alias distributions on PyPI.
 
 It will create an "empty" package with a different name (the "alias") that depends on the package in your current working directory.
 
-* Free software: BSD license
+* Free software: BSD 2-Clause License
 
 Installation
 ============
@@ -77,11 +59,52 @@ Installation
 
     pip install pypi-alias
 
-Documentation
-=============
+You can also install the in-development version with::
+
+    pip install https://github.com/ionelmc/pypi-alias/archive/master.zip
+
+Usage
+=====
 
 Make sure you run ``pypi-alias`` in a directory that has a ``setup.py`` file.
 
-Usage::
+Example::
 
-    pypi-alias alternate-name register sdist bdist_wheel upload
+    pypi-alias foobar sdist bdist_wheel
+    twine upload dist\foobar*
+
+Documentation
+=============
+
+
+To use the project:
+
+.. code-block:: python
+
+    import pypi_alias
+    pypi_alias.-()
+
+
+Development
+===========
+
+To run all the tests run::
+
+    tox
+
+Note, to combine the coverage data from all the tox environments run:
+
+.. list-table::
+    :widths: 10 90
+    :stub-columns: 1
+
+    - - Windows
+      - ::
+
+            set PYTEST_ADDOPTS=--cov-append
+            tox
+
+    - - Other
+      - ::
+
+            PYTEST_ADDOPTS=--cov-append tox
