@@ -43,7 +43,6 @@ setup(
     maintainer_email={maintainer_email!r},
     name={options.name!r},
     platforms=['all'],
-    py_modules=['wheel-platform-tag-is-broken-on-empty-wheels-see-issue-141'],
     url={url!r},
     version={options.version!r},
     zip_safe=False,
