@@ -50,13 +50,17 @@ setup(
 """
 
     path = tempfile.mkdtemp()
+    src = os.path.abspath(os.getcwd())
     try:
-        os.symlink(os.path.abspath('dist'), os.path.join(path, 'dist'), target_is_directory=True)
+        os.symlink(os.path.join(src, 'dist'), os.path.join(path, 'dist'), target_is_directory=True)
         os.chdir(path)
         with open(os.path.join(path, 'setup.cfg'), 'w', encoding="utf-8") as fh:
             fh.write("""[bdist_wheel]
 universal = 1
 """)
+        with open(os.path.join(path, 'README'), 'w', encoding="utf-8") as fh:
+            fh.write(long_description)
+
         with open(os.path.join(path, 'setup.py'), 'w', encoding="utf-8") as fh:
             fh.write(setup_py)
 
@@ -65,5 +69,6 @@ universal = 1
         print(f'-> Running: python setup.py {" ".join(passthrough_args)}')
         subprocess.call(['python', 'setup.py'] + passthrough_args)
     finally:
+        os.chdir(src)
         if not options.dirty:
             shutil.rmtree(path)
