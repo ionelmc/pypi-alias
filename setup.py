@@ -23,7 +23,7 @@ def read(*names, **kwargs):
 
 setup(
     name='pypi-alias',
-    version='0.2.0',
+    version='1.0.0',
     license='BSD-2-Clause',
     description='A small utility to make alias distributions on PyPI.',
     long_description='%s\n%s' % (
