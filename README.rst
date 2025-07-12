@@ -8,19 +8,9 @@ Overview
     :stub-columns: 1
 
     * - tests
-      - | |travis| |requires|
-        |
+      -
     * - package
-      - | |version| |wheel| |supported-versions| |supported-implementations|
-        | |commits-since|
-
-.. |travis| image:: https://api.travis-ci.com/ionelmc/pypi-alias.svg?branch=master
-    :alt: Travis-CI Build Status
-    :target: https://travis-ci.com/github/ionelmc/pypi-alias
-
-.. |requires| image:: https://requires.io/github/ionelmc/pypi-alias/requirements.svg?branch=master
-    :alt: Requirements Status
-    :target: https://requires.io/github/ionelmc/pypi-alias/requirements/?branch=master
+      - |version| |wheel| |supported-versions| |supported-implementations| |commits-since|
 
 .. |version| image:: https://img.shields.io/pypi/v/pypi-alias.svg
     :alt: PyPI Package latest release
@@ -40,7 +30,7 @@ Overview
 
 .. |commits-since| image:: https://img.shields.io/github/commits-since/ionelmc/pypi-alias/v1.0.0.svg
     :alt: Commits since latest release
-    :target: https://github.com/ionelmc/pypi-alias/compare/v0.2.0...master
+    :target: https://github.com/ionelmc/pypi-alias/compare/v1.0.0...main
 
 
 
@@ -73,16 +63,6 @@ Example::
     pypi-alias foobar sdist bdist_wheel
     twine upload dist\foobar*
 
-Documentation
-=============
-
-
-To use the project:
-
-.. code-block:: python
-
-    import pypi_alias
-    pypi_alias.-()
 
 
 Development
