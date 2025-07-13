@@ -84,6 +84,11 @@ The resulting files are in ``dist\``, assuming you haven't used ``--outdir``, yo
 
     twine upload dist\python-foobar*
 
+Examples
+========
+
+This tool has been used to create https://pypi.org/project/python-hunter/ - an alias for https://pypi.org/project/hunter/
+
 Development
 ===========
 
