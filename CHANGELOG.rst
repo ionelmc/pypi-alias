@@ -2,6 +2,12 @@
 Changelog
 =========
 
+2.0.0 (2025-07-13)
+------------------
+
+* Now build/pkginfo are used to get package metadata. This means ``pyproject.toml`` projects are supported.
+* Dropped support for Python 3.8 or older.
+
 1.0.0 (2021-04-08)
 ------------------
 

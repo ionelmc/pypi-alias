@@ -60,14 +60,29 @@ You can also install the in-development version with::
 Usage
 =====
 
-Make sure you run ``pypi-alias`` in a directory that has a ``setup.py`` file.
+You can use ``pypi-alias`` with a distribution file (a ``.whl`` file or a sdist) or with a path, as long as it has a ``pyproject.toml``
+with build configuration in it.
 
-Example::
+Example, if say, you have a ``foobar`` package, and you want to make an alias with name ``python-foobar``, assuming your in the checkout
+path::
 
-    pypi-alias foobar sdist bdist_wheel
-    twine upload dist\foobar*
+    pypi-alias python-foobar
 
+You can specify a version::
 
+    pypi-alias python-foobar --alias-version=1.0
+
+You can use a dist file::
+
+    pypi-alias python-foobar --alias-version=1.0 dist/foobar-1.2.3.tar.gz
+
+And you can also add some build options for the resulting alias package (example: only build sdist in a different path)::
+
+    pypi-alias python-foobar --alias-version=1.0 dist/foobar-1.2.3.tar.gz -- --dist --outdir=aliased-dist
+
+The resulting files are in ``dist\``, assuming you haven't used ``--outdir``, you can upload them with twine::
+
+    twine upload dist\python-foobar*
 
 Development
 ===========
