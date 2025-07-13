@@ -8,9 +8,13 @@ Overview
     :stub-columns: 1
 
     * - tests
-      -
+      - |github-actions|
     * - package
       - |version| |wheel| |supported-versions| |supported-implementations| |commits-since|
+
+.. |github-actions| image:: https://github.com/ionelmc/pypi-alias/actions/workflows/github-actions.yml/badge.svg
+    :alt: GitHub Actions Build Status
+    :target: https://github.com/ionelmc/pypi-alias/actions
 
 .. |version| image:: https://img.shields.io/pypi/v/pypi-alias.svg
     :alt: PyPI Package latest release
